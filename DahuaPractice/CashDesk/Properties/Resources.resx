@@ -117,7 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="TitleString" xml:space="preserve">
+  <data name="AmountLabelString" xml:space="preserve">
+    <value>数量：</value>
+  </data>
+  <data name="AppTitleString" xml:space="preserve">
     <value>收银系统</value>
+  </data>
+  <data name="DiscountLabelString" xml:space="preserve">
+    <value>优惠：</value>
+  </data>
+  <data name="OKButtonCaptionString" xml:space="preserve">
+    <value>确定</value>
+  </data>
+  <data name="PriceLabelString" xml:space="preserve">
+    <value>单价：</value>
+  </data>
+  <data name="ResetButtonCaptionString" xml:space="preserve">
+    <value>重置</value>
+  </data>
+  <data name="TotalLabelString" xml:space="preserve">
+    <value>总额：</value>
   </data>
 </root>

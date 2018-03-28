@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ShouYinTai.Properties {
+namespace CashDesk.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace ShouYinTai.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ShouYinTai.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CashDesk.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,11 +61,65 @@ namespace ShouYinTai.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 数量：.
+        /// </summary>
+        internal static string AmountLabelString {
+            get {
+                return ResourceManager.GetString("AmountLabelString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 收银系统.
         /// </summary>
-        internal static string TitleString {
+        internal static string AppTitleString {
             get {
-                return ResourceManager.GetString("TitleString", resourceCulture);
+                return ResourceManager.GetString("AppTitleString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 优惠：.
+        /// </summary>
+        internal static string DiscountLabelString {
+            get {
+                return ResourceManager.GetString("DiscountLabelString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 确定.
+        /// </summary>
+        internal static string OKButtonCaptionString {
+            get {
+                return ResourceManager.GetString("OKButtonCaptionString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 单价：.
+        /// </summary>
+        internal static string PriceLabelString {
+            get {
+                return ResourceManager.GetString("PriceLabelString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 重置.
+        /// </summary>
+        internal static string ResetButtonCaptionString {
+            get {
+                return ResourceManager.GetString("ResetButtonCaptionString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 总额：.
+        /// </summary>
+        internal static string TotalLabelString {
+            get {
+                return ResourceManager.GetString("TotalLabelString", resourceCulture);
             }
         }
     }
