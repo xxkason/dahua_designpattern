@@ -2,6 +2,6 @@
 {
     abstract class DiscountPolicy
     {
-        public abstract decimal AcceptedCash(decimal money);
+        public abstract double AcceptedCash(double money);
     }
 }

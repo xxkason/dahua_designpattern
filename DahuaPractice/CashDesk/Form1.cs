@@ -12,7 +12,7 @@ namespace CashDesk
 {
     public partial class Form1 : Form
     {
-        decimal Total { get; set; } = 0.00m;
+        double Total { get; set; } = 0.00;
         public Form1()
         {
             InitializeComponent();
@@ -22,15 +22,15 @@ namespace CashDesk
 
         private void OKButton_Click(object sender, EventArgs e)
         {
-            decimal price = priceSpinner.Value;
-            decimal amount = amountSpinner.Value;
-            decimal result = price * amount;
-            switch (discountComboBox.SelectedIndex)
+            double price = (double)priceSpinner.Value;
+            double amount = (double)amountSpinner.Value;
+            double result = price * amount;
+            switch (discountComboBox.SelectedText)
             {
-                case 0:
+                case "无优惠":
                     break;
                 case 1:
-                    result *= 0.8m;
+                    result *= 0.8;
                     break;
                 case 2:
                     if (result >= 300)
@@ -39,7 +39,7 @@ namespace CashDesk
                     }
                     break;
                 case 3:
-                    result *= 0.6m;
+                    result *= 0.6;
                     break;
             }
             Total += result;
@@ -52,7 +52,7 @@ namespace CashDesk
         {
             priceSpinner.Value = 1.00m;
             amountSpinner.Value = 0;
-            Total = 0.00m;
+            Total = 0.00;
             listBox1.Items.Clear();
             totalLabel.Text = Total.ToString();
             discountComboBox.SelectedIndex = 0;

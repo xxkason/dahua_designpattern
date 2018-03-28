@@ -48,6 +48,8 @@
   <ItemGroup>
     <Compile Include="DiscountPolicy.cs" />
     <Compile Include="DiscountPolicyDazhe.cs" />
+    <Compile Include="DiscountPolicyManfan.cs" />
+    <Compile Include="DiscountPolicyNormal.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

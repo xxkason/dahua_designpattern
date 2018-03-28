@@ -8,9 +8,12 @@ namespace CashDesk
 {
     class DiscountPolicyDazhe : DiscountPolicy
     {
-        public override decimal AcceptedCash(decimal money, decimal discount)
+        private double discount = 1.0;
+
+        public DiscountPolicyDazhe(string  moneyRebate)
         {
-            return money * discount;
+            discount = double.Parse(moneyRebate);
         }
+        public override double AcceptedCash(double money) => money * discount;
     }
 }
