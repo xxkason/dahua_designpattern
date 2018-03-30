@@ -25,8 +25,9 @@ namespace CashDesk
             double price = (double)priceSpinner.Value;
             double amount = (double)amountSpinner.Value;
             double result = 0.0;
-            DiscountPolicy activityPolicy = DiscountPolicyFactory.CreateDiscountPolicy(discountComboBox.Text);
-            result = activityPolicy.AcceptedCash(price * amount);
+            //DiscountPolicy activityPolicy = DiscountPolicyFactory.CreateDiscountPolicy(discountComboBox.SelectedItem.ToString());
+            Context debratePolicy = new Context(discountComboBox.SelectedItem.ToString());
+            result = debratePolicy.GetResult(price * amount);
             Total += result;
             listBox1.Items.Add(Properties.Resources.PriceLabelString + price.ToString() + Properties.Resources.AmountLabelString + amount.ToString()
                 + Properties.Resources.TotalLabelString + Total.ToString());
