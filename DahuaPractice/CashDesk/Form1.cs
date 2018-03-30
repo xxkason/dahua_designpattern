@@ -24,24 +24,9 @@ namespace CashDesk
         {
             double price = (double)priceSpinner.Value;
             double amount = (double)amountSpinner.Value;
-            double result = price * amount;
-            switch (discountComboBox.SelectedText)
-            {
-                case "无优惠":
-                    break;
-                case 1:
-                    result *= 0.8;
-                    break;
-                case 2:
-                    if (result >= 300)
-                    {
-                        result -= 100;
-                    }
-                    break;
-                case 3:
-                    result *= 0.6;
-                    break;
-            }
+            double result = 0.0;
+            DiscountPolicy activityPolicy = DiscountPolicyFactory.CreateDiscountPolicy(discountComboBox.Text);
+            result = activityPolicy.AcceptedCash(price * amount);
             Total += result;
             listBox1.Items.Add(Properties.Resources.PriceLabelString + price.ToString() + Properties.Resources.AmountLabelString + amount.ToString()
                 + Properties.Resources.TotalLabelString + Total.ToString());

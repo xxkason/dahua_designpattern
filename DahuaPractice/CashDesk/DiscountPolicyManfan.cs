@@ -6,10 +6,10 @@ namespace CashDesk
     {
         double moneyCondition = 0.0;
         double moneyReturn = 0.0;
-        public DiscountPolicyManfan(string moneyCondition, string moneyReturn)
+        public DiscountPolicyManfan(double moneyCondition, double moneyReturn)
         {
-            this.moneyCondition = double.Parse(moneyCondition);
-            this.moneyReturn = double.Parse(moneyReturn);
+            this.moneyCondition = moneyCondition;
+            this.moneyReturn = moneyReturn;
         }
         public override double AcceptedCash(double money)
         {

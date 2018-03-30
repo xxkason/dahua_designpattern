@@ -10,9 +10,9 @@ namespace CashDesk
     {
         private double discount = 1.0;
 
-        public DiscountPolicyDazhe(string  moneyRebate)
+        public DiscountPolicyDazhe(double  moneyRebate)
         {
-            discount = double.Parse(moneyRebate);
+            discount = moneyRebate;
         }
         public override double AcceptedCash(double money) => money * discount;
     }
