@@ -53,6 +53,20 @@ namespace cashier
         }
     }
 
+    public class DiscountContext
+    {
+        private DiscountSuper concreteActivity;
+        public DiscountContext(DiscountSuper activity)
+        {
+            this.concreteActivity = activity;
+        }
+
+        public double DiscountMoney(double money)
+        {
+            return this.concreteActivity.GetDiscountResult(money);
+        }
+    }
+
     class Program
     {
         static void Main(string[] args)
@@ -71,8 +85,24 @@ namespace cashier
                 Console.Write("Please select discount activity: 0 Normal, 1 八折, 2 满100返50");
                 string strDiscount = Console.ReadLine();
                 int iDiscount = Convert.ToInt16(strDiscount);
-                DiscountSuper activity = DiscountFactory.DiscountActivity(iDiscount);
-                double dUnitTotal = activity.GetDiscountResult(dUnitPrice * iAmount);
+                // 用策略模式后，就不用工厂来构造具体的打折策略，而用context来实现，但是这样，把构造的switch case语句又
+                // 移到了客户端来实现
+                // DiscountSuper activity = DiscountFactory.DiscountActivity(iDiscount);
+                DiscountContext activityContext = null;
+                switch (iDiscount)
+                {
+                    case 0:
+                        activityContext = new DiscountContext(new DiscountRebate(1));
+                        break;
+                    case 1:
+                        activityContext = new DiscountContext(new DiscountRebate(0.8));
+                        break;
+                    case 2:
+                        activityContext = new DiscountContext(new DiscountReturn(100, 50));
+                        break;
+                }
+                // double dUnitTotal = activity.GetDiscountResult(dUnitPrice * iAmount);
+                double dUnitTotal = activityContext.DiscountMoney(dUnitPrice * iAmount);
                 dTotal = dTotal + dUnitTotal;
                 string msg = String.Format("{4}: Unit Price: ${0:F}, Number: {1}, Total: {2:F}\nCurrent Total: ${3:F}", dUnitPrice, iAmount, dUnitTotal, dTotal, index);
                 Console.WriteLine(msg);
