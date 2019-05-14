@@ -37,28 +37,40 @@ namespace cashier
         }
     }
 
-    public class DiscountFactory
-    {
-        public static DiscountSuper DiscountActivity(int index)
-        {
-            switch (index)
-            {
-                case 1:
-                    return new DiscountRebate(0.8);
-                case 2:
-                    return new DiscountReturn(100, 50);
-                default:
-                    return new DiscountRebate(1);
-            }
-        }
-    }
+    // public class DiscountFactory
+    // {
+    //     public static DiscountSuper DiscountActivity(int index)
+    //     {
+    //         switch (index)
+    //         {
+    //             case 1:
+    //                 return new DiscountRebate(0.8);
+    //             case 2:
+    //                 return new DiscountReturn(100, 50);
+    //             default:
+    //                 return new DiscountRebate(1);
+    //         }
+    //     }
+    // }
 
     public class DiscountContext
     {
         private DiscountSuper concreteActivity;
-        public DiscountContext(DiscountSuper activity)
+        public DiscountContext(int index)
         {
-            this.concreteActivity = activity;
+            // 怎样可以利用反射机制，讲这个switch case语句来改进？？
+            switch (index)
+            {
+                case 0:
+                    this.concreteActivity = new DiscountRebate(1);
+                    break;
+                case 1:
+                    this.concreteActivity = new DiscountRebate(0.8);
+                    break;
+                case 2:
+                    this.concreteActivity = new DiscountReturn(100, 50);
+                    break;
+            }
         }
 
         public double DiscountMoney(double money)
@@ -82,25 +94,17 @@ namespace cashier
                 Console.Write("Please input the number of the good: ");
                 string strAmount = Console.ReadLine();
                 int iAmount = Convert.ToInt32(strAmount);
-                Console.Write("Please select discount activity: 0 Normal, 1 八折, 2 满100返50");
+                Console.Write("Please select discount activity: 0 Normal, 1 八折, 2 满100返50: ");
                 string strDiscount = Console.ReadLine();
                 int iDiscount = Convert.ToInt16(strDiscount);
-                // 用策略模式后，就不用工厂来构造具体的打折策略，而用context来实现，但是这样，把构造的switch case语句又
-                // 移到了客户端来实现
+
                 // DiscountSuper activity = DiscountFactory.DiscountActivity(iDiscount);
-                DiscountContext activityContext = null;
-                switch (iDiscount)
-                {
-                    case 0:
-                        activityContext = new DiscountContext(new DiscountRebate(1));
-                        break;
-                    case 1:
-                        activityContext = new DiscountContext(new DiscountRebate(0.8));
-                        break;
-                    case 2:
-                        activityContext = new DiscountContext(new DiscountReturn(100, 50));
-                        break;
-                }
+                // 用策略模式后，就不用工厂来构造具体的打折策略，而用context来实现，
+                // 但是这样，把构造的switch case语句又移到了客户端来实现
+                
+                // 通过策略模式和简单工厂模式的结合，在context类的构造函数中实现简单工厂
+                DiscountContext activityContext = new DiscountContext(iDiscount);
+                
                 // double dUnitTotal = activity.GetDiscountResult(dUnitPrice * iAmount);
                 double dUnitTotal = activityContext.DiscountMoney(dUnitPrice * iAmount);
                 dTotal = dTotal + dUnitTotal;
