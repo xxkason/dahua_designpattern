@@ -44,7 +44,7 @@ namespace fashion
 
         public override void Show()
         {
-            Console.Write(this.Name);
+            Console.Write("{0} ", this.Name);
             base.Show();
         }
     }
@@ -104,13 +104,13 @@ namespace fashion
         {
             Person kk = new Person("kk");
             Console.WriteLine("HipHop Stype:");
-            Wearing t = new Wearing("Oversize T-Shirts");
-            t.Decorate(kk);
-            Wearing p = new Wearing("Big Pants");
-            p.Decorate(t);
             Wearing s = new Wearing("Sneaker");
-            s.Decorate(p);
-            s.Show();
+            s.Decorate(kk);
+            Wearing p = new Wearing("Big Pants");
+            p.Decorate(s);
+            Wearing t = new Wearing("Oversize T-Shirts");
+            t.Decorate(p);
+            t.Show();
             // Console.WriteLine("Professional Style:");
             // Suite suite = new Suite();
             // suite.Decorate(kk);
